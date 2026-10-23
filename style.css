@@ -1,26 +1,29 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap');
 
-/* =========================================================
-   JOTECH DIGITAL STUDIO — PREMIUM RESPONSIVE STYLESHEET
-   Replace the contents of style.css with this entire file.
-========================================================= */
+/* =========================================
+   JOTECH — DARK CINEMATIC DESIGN SYSTEM
+========================================= */
 
 :root {
-    --navy: #101a2c;
-    --navy-light: #17243a;
+    --navy: #080c16;
+    --navy-light: #101827;
+
     --blue: #4f7cff;
     --blue-dark: #345fe0;
-    --blue-light: #eaf0ff;
+    --blue-light: #a9bdff;
+
     --white: #ffffff;
-    --background: #f8f9fc;
-    --text: #1a2232;
-    --muted: #6e7788;
-    --border: #e6e9ef;
+    --background: #0b101b;
+    --text: #f1f4fb;
+    --muted: #a0aabd;
+    --border: rgba(255, 255, 255, 0.10);
+
     --container: 1160px;
     --radius: 12px;
-    --shadow-sm: 0 8px 30px rgba(16, 26, 44, 0.04);
-    --shadow-md: 0 18px 45px rgba(16, 26, 44, 0.08);
-    --shadow-lg: 0 28px 70px rgba(16, 26, 44, 0.15);
+
+    --shadow-sm: 0 8px 30px rgba(0, 0, 0, 0.18);
+    --shadow-md: 0 18px 45px rgba(0, 0, 0, 0.25);
+    --shadow-lg: 0 28px 70px rgba(0, 0, 0, 0.38);
 }
 
 * {
@@ -37,7 +40,7 @@ html {
 body {
     font-family: "DM Sans", Arial, sans-serif;
     color: var(--text);
-    background: var(--white);
+    background: var(--background);
     line-height: 1.7;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
@@ -1801,110 +1804,446 @@ margin-top: 32px;
 
 }
 
+/* =========================================
+   ACCESSIBILITY — REDUCED MOTION
+========================================= */
+
 @media (prefers-reduced-motion: reduce) {
-.work-section .work-card .work-project-image {
-transition: none;/* =========================================
-JOTECH — CONTACT FORM
+    .work-section .work-card .work-project-image {
+        transition: none;
+    }
+}
+
+/* =========================================
+   JOTECH — CONTACT FORM LAYOUT
 ========================================= */
 
 .contact-form {
-display: grid;
-grid-template-columns: repeat(2, minmax(0, 1fr));
-gap: 24px;
-width: 100%;
-max-width: 900px;
-margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
 }
 
 .contact-form .form-group {
-display: flex;
-flex-direction: column;
-gap: 10px;
-min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    min-width: 0;
 }
 
 .contact-form .form-group:last-of-type {
-grid-column: 1 / -1;
+    grid-column: 1 / -1;
 }
 
 .contact-form label {
-font-size: 13px;
-font-weight: 600;
+    font-size: 13px;
+    font-weight: 600;
 }
 
 .contact-form input,
 .contact-form select,
 .contact-form textarea {
-width: 100%;
-min-width: 0;
-padding: 15px 16px;
-border: 1px solid rgba(127, 145, 170, 0.28);
-border-radius: 6px;
-background: rgba(255, 255, 255, 0.04);
-color: inherit;
-font: inherit;
-font-size: 14px;
-outline: none;
-transition: border-color 0.2s ease;
+    width: 100%;
+    min-width: 0;
+    padding: 15px 16px;
+    border: 1px solid rgba(127, 145, 170, 0.28);
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.04);
+    color: inherit;
+    font: inherit;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.2s ease;
 }
 
 .contact-form input,
 .contact-form select {
-min-height: 52px;
+    min-height: 52px;
 }
 
 .contact-form textarea {
-min-height: 150px;
-resize: vertical;
-line-height: 1.7;
+    min-height: 150px;
+    resize: vertical;
+    line-height: 1.7;
 }
 
 .contact-form input:focus,
 .contact-form select:focus,
 .contact-form textarea:focus {
-border-color: #4f7cff;
+    border-color: var(--blue);
 }
 
 .contact-form select option {
-background: #101a2c;
-color: #ffffff;
+    background: var(--navy);
+    color: var(--white);
 }
 
 .contact-form input::placeholder,
 .contact-form textarea::placeholder {
-color: #8992a3;
-opacity: 1;
+    color: #8992a3;
+    opacity: 1;
 }
 
 .contact-form button[type="submit"] {
-justify-self: start;
-cursor: pointer;
-border: none;
+    justify-self: start;
+    cursor: pointer;
+    border: none;
 }
 
 .contact-form .form-status {
-grid-column: 1 / -1;
-margin: 0;
-font-size: 14px;
-line-height: 1.7;
+    grid-column: 1 / -1;
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.7;
 }
+
+/* =========================================
+   MOBILE — CONTACT FORM
+========================================= */
 
 @media (max-width: 600px) {
-.contact-form {
-grid-template-columns: 1fr;
-gap: 20px;
+    .contact-form {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 20px;
+    }
+
+    .contact-form .form-group:last-of-type,
+    .contact-form .form-status {
+        grid-column: auto;
+    }
+
+    .contact-form button[type="submit"] {
+        width: 100%;
+        justify-content: center;
+    }
+}
+/* =========================================
+   JOTECH — CINEMATIC NAVIGATION
+========================================= */
+
+.site-header {
+    background: rgba(8, 12, 22, 0.88);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
 }
 
-.contact-form .form-group:last-of-type,
-.contact-form .form-status {
-    grid-column: auto;
+.site-header:hover {
+    box-shadow: 0 8px 35px rgba(0, 0, 0, 0.22);
 }
 
-.contact-form button[type="submit"] {
-    width: 100%;
-    justify-content: center;
+.brand-name {
+    color: #ffffff;
 }
 
+.brand-description {
+    color: #929db2;
 }
+
+.nav-links a {
+    color: #b8c1d2;
 }
+
+.nav-links a:hover,
+.nav-links a:focus-visible {
+    color: #7fa0ff;
+}
+
+.nav-cta {
+    background: #4f7cff;
+    color: #ffffff;
+}
+
+.nav-cta:hover {
+    background: #345fe0;
+}
+
+/* =========================================
+   JOTECH — CINEMATIC HERO
+========================================= */
+
+.hero {
+    background:
+        radial-gradient(
+            ellipse at 85% 30%,
+            rgba(79, 124, 255, 0.12),
+            transparent 42%
+        ),
+        linear-gradient(
+            135deg,
+            #0b101b 0%,
+            #101827 55%,
+            #0b101b 100%
+        );
+}
+
+.hero::before {
+    background: radial-gradient(
+        circle,
+        rgba(79, 124, 255, 0.18) 0%,
+        rgba(79, 124, 255, 0.05) 45%,
+        transparent 72%
+    );
+}
+
+.availability {
+    background: rgba(255, 255, 255, 0.04);
+    border-color: rgba(255, 255, 255, 0.12);
+    color: #c3cce0;
+}
+
+.hero h1 {
+    color: #f7f9ff;
+}
+
+.hero-description {
+    color: #a5b0c4;
+}
+
+.hero-note {
+    color: #a5b0c4;
+}
+
+.hero-workspace-image {
+    border-color: rgba(255, 255, 255, 0.12);
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4);
+}
+
+/* Secondary button */
+
+.button-secondary {
+    background: rgba(255, 255, 255, 0.04);
+    border-color: rgba(255, 255, 255, 0.16);
+    color: #f1f4fb;
+}
+
+.button-secondary:hover {
+    background: rgba(255, 255, 255, 0.09);
+    border-color: rgba(127, 160, 255, 0.55);
+}
+
+/* Mobile navigation */
+
+@media (max-width: 680px) {
+    .nav-links {
+        background: #101827;
+        border-bottom-color: rgba(255, 255, 255, 0.1);
+        box-shadow: 0 18px 35px rgba(0, 0, 0, 0.3);
+    }
+
+    .nav-links a {
+        color: #c3cce0;
+    }
+
+    .menu-toggle {
+        background: #101827;
+        border-color: rgba(255, 255, 255, 0.14);
+    }
+
+    .menu-toggle span {
+        background: #ffffff;
+    }
+}
+/* =========================================
+   JOTECH — CINEMATIC INTRO STRIP
+========================================= */
+
+.intro-strip {
+    background: #080c16;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.intro-inner > span {
+    color: #a0aabd;
+}
+
+/* =========================================
+   JOTECH — PREMIUM SECTION HEADINGS
+========================================= */
+
+.section-heading h2,
+.about-content h2 {
+    color: #f1f4fb;
+}
+
+.section-heading > p {
+    color: #a0aabd;
+}
+
+/* =========================================
+   JOTECH — DARK SERVICES SECTION
+========================================= */
+
+.services-section {
+    background: #0b101b;
+}
+
+.service-card {
+    background: linear-gradient(
+        145deg,
+        #111a2b 0%,
+        #0d1422 100%
+    );
+    border-color: rgba(255, 255, 255, 0.09);
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.12);
+}
+
+.service-card:hover {
+    border-color: rgba(79, 124, 255, 0.5);
+    box-shadow: 0 22px 45px rgba(0, 0, 0, 0.25);
+}
+
+.service-number {
+    color: #8290a8;
+}
+
+.service-icon {
+    background: rgba(79, 124, 255, 0.1);
+    border-color: rgba(79, 124, 255, 0.25);
+    color: #8eabff;
+}
+
+.service-card h3 {
+    color: #f1f4fb;
+}
+
+.service-card p {
+    color: #a0aabd;
+}
+
+.text-link {
+    color: #f1f4fb;
+}
+
+.text-link span {
+    color: #7fa0ff;
+}
+
+/* =========================================
+   JOTECH — ABOUT SECTION
+========================================= */
+
+.about-section {
+    background:
+        radial-gradient(
+            ellipse at 15% 50%,
+            rgba(79, 124, 255, 0.07),
+            transparent 45%
+        ),
+        #101827;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.about-symbol {
+    color: rgba(142, 171, 255, 0.12);
+}
+
+.about-content > p {
+    color: #a0aabd;
+}
+
+.about-image {
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.3);
+}
+/* =========================================
+JOTECH — PREMIUM PORTFOLIO SHOWCASE
+========================================= */
+
+.work-section {
+background:
+radial-gradient(
+ellipse at 50% 0%,
+rgba(79, 124, 255, 0.13),
+transparent 55%
+),
+linear-gradient(
+145deg,
+#101a30 0%,
+#0d1526 55%,
+#101a30 100%
+);
+border-top: 1px solid rgba(127, 160, 255, 0.14);
+border-bottom: 1px solid rgba(127, 160, 255, 0.14);
+}
+
+/* Portfolio heading */
+
+.work-section .section-heading h2 {
+color: #ffffff;
+}
+
+.work-section .section-heading > p {
+color: #aebbd3;
+}
+
+/* Project cards */
+
+.work-card {
+background: linear-gradient(
+145deg,
+#18243b 0%,
+#121c30 100%
+);
+border: 1px solid rgba(255, 255, 255, 0.09);
+border-radius: 16px;
+box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+transition:
+transform 0.3s ease,
+border-color 0.3s ease,
+box-shadow 0.3s ease;
+}
+
+.work-card:hover {
+transform: translateY(-6px);
+border-color: rgba(79, 124, 255, 0.55);
+box-shadow: 0 22px 50px rgba(0, 0, 0, 0.3);
+}
+
+/* Project information */
+
+.work-details h3 {
+color: #f5f7ff;
+}
+
+.work-details p {
+color: #aab6cc;
+}
+
+.work-category {
+color: #9db4ff;
+background: rgba(79, 124, 255, 0.12);
+border: 1px solid rgba(79, 124, 255, 0.22);
+}
+
+.work-technologies {
+color: #aebbd3;
+}
+
+/* Project links */
+
+.work-links a {
+color: #a9bdff;
+transition: color 0.25s ease;
+}
+
+.work-links a:hover {
+color: #ffffff;
+}
+
+/* Project images */
+
+.work-project-image {
+border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Portfolio disclaimer */
+
+.portfolio-disclaimer {
+color: #a0aabd;
+border-top-color: rgba(255, 255, 255, 0.1);
 }
