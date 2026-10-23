@@ -2247,3 +2247,236 @@ border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 color: #a0aabd;
 border-top-color: rgba(255, 255, 255, 0.1);
 }
+/* =========================================
+JOTECH — PREMIUM CONTACT SECTION
+========================================= */
+
+.contact-section {
+background:
+radial-gradient(
+ellipse at 85% 20%,
+rgba(79, 124, 255, 0.09),
+transparent 42%
+),
+#0b101b;
+border-top: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.contact-section .section-heading h2 {
+color: #f5f7ff;
+}
+
+.contact-section .section-heading > p {
+color: #a0aabd;
+}
+
+/* Contact form container */
+
+.contact-form {
+background: linear-gradient(
+145deg,
+#131d31 0%,
+#0f1727 100%
+);
+border: 1px solid rgba(255, 255, 255, 0.1);
+border-radius: 18px;
+padding: 32px;
+box-shadow: 0 24px 60px rgba(0, 0, 0, 0.22);
+}
+
+/* Form labels */
+
+.contact-form label {
+color: #e7ecf8;
+}
+
+/* Input fields */
+
+.contact-form input,
+.contact-form textarea,
+.contact-form select {
+background: #0b1220;
+color: #f1f4fb;
+border: 1px solid rgba(255, 255, 255, 0.13);
+border-radius: 9px;
+transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+/* Placeholder text */
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+color: #77849b;
+}
+
+/* Focus state */
+
+.contact-form input:focus,
+.contact-form textarea:focus,
+.contact-form select:focus {
+outline: none;
+border-color: #4f7cff;
+box-shadow: 0 0 0 3px rgba(79, 124, 255, 0.15);
+}
+
+/* Submit button */
+
+.contact-form button[type="submit"] {
+background: #4f7cff;
+color: #ffffff;
+border: 1px solid transparent;
+border-radius: 9px;
+transition: background 0.25s ease, transform 0.25s ease;
+}
+
+.contact-form button[type="submit"]:hover {
+background: #345fe0;
+transform: translateY(-2px);
+}
+
+/* Mobile spacing */
+
+@media (max-width: 600px) {
+.contact-form {
+padding: 22px 18px;
+}
+}
+/* =========================================
+JOTECH — PREMIUM FOOTER
+========================================= */
+
+.site-footer {
+background: #080c16;
+border-top: 1px solid rgba(255, 255, 255, 0.09);
+color: #a0aabd;
+}
+
+.site-footer p {
+color: #929db2;
+}
+
+.site-footer a {
+color: #a9bdff;
+transition: color 0.25s ease;
+}
+
+.site-footer a:hover {
+color: #ffffff;
+}
+
+/* Footer brand */
+
+.site-footer .brand-name {
+color: #ffffff;
+}
+
+.site-footer .brand-description {
+color: #929db2;
+}
+
+/* Footer divider */
+
+.site-footer hr {
+border: 0;
+border-top: 1px solid rgba(255, 255, 255, 0.09);
+}
+
+/* Footer spacing on mobile */
+
+@media (max-width: 600px) {
+.site-footer {
+text-align: center;
+}
+}
+/* =========================================
+JOTECH — MOBILE RESPONSIVENESS POLISH
+========================================= */
+
+/* Prevent accidental horizontal scrolling */
+
+html,
+body {
+max-width: 100%;
+overflow-x: clip;
+}
+
+/* Make images responsive */
+
+img {
+max-width: 100%;
+height: auto;
+}
+
+/* Tablet and smaller screens */
+
+@media (max-width: 768px) {
+.container {
+width: min(100% - 36px, 1160px);
+}
+
+.section-heading {
+    margin-bottom: 32px;
+}
+
+.work-grid,
+.services-grid {
+    grid-template-columns: minmax(0, 1fr);
+}
+
+.work-card,
+.service-card {
+    width: 100%;
+    min-width: 0;
+}
+
+.hero {
+    overflow: hidden;
+}
+
+.hero h1 {
+    font-size: clamp(2rem, 8vw, 3.2rem);
+    line-height: 1.12;
+}
+
+.hero-description {
+    font-size: 1rem;
+    line-height: 1.75;
+}
+
+.hero-workspace-image {
+    max-width: 100%;
+}
+
+}
+
+/* Smaller phones */
+
+@media (max-width: 480px) {
+.container {
+width: calc(100% - 28px);
+}
+
+.button,
+.nav-cta,
+.contact-form button[type="submit"] {
+    min-height: 46px;
+}
+
+.work-details,
+.service-card {
+    padding: 20px;
+}
+
+.contact-form {
+    width: 100%;
+}
+
+.contact-form input,
+.contact-form textarea,
+.contact-form select {
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+}
+
+}
