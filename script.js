@@ -50,13 +50,13 @@ if (yearElement) {
 
 
 /* =========================================
-   JOTECH — EMAIL + WHATSAPP CONTACT FORM
+   JOTECH — PROJECT ENQUIRY FORM
 ========================================= */
 
 const contactForm = document.querySelector("#contact-form");
 const formStatus = document.querySelector("#form-status");
 
-if (contactForm) {
+if (contactForm && formStatus) {
     contactForm.addEventListener("submit", async function (event) {
         event.preventDefault();
 
@@ -64,64 +64,17 @@ if (contactForm) {
             return;
         }
 
-        const clientName =
-            document.querySelector("#client-name")?.value.trim();
-
-        const clientEmail =
-            document.querySelector("#client-email")?.value.trim();
-
-        const projectType =
-            document.querySelector("#project-type")?.value;
-
-        const projectBudget =
-            document.querySelector("#project-budget")?.value;
-
-        const projectMessage =
-            document.querySelector("#project-message")?.value.trim();
-
-        if (
-            !clientName ||
-            !clientEmail ||
-            !projectType ||
-            !projectBudget ||
-            !projectMessage
-        ) {
-            if (formStatus) {
-                formStatus.textContent = "Please complete all fields.";
-            }
-            return;
-        }
-
-        const whatsappMessage = [
-            "Hello JOTECH Digital Studio!",
-            "",
-            "I'd like to enquire about a website project.",
-            "",
-            `Name: ${clientName}`,
-            `Email: ${clientEmail}`,
-            `Project Type: ${projectType}`,
-            `Estimated Budget: ${projectBudget}`,
-            "",
-            "Project Details:",
-            projectMessage
-        ].join("\n");
-
-        const whatsappURL =
-            "https://wa.me/2349162909940?text=" +
-            encodeURIComponent(whatsappMessage);
-
         const submitButton = contactForm.querySelector(
             'button[type="submit"]'
         );
 
-        if (submitButton) {
-            submitButton.disabled = true;
-            submitButton.textContent = "Sending Enquiry...";
-        }
+        const originalButtonHTML = submitButton.innerHTML;
 
-        if (formStatus) {
-            formStatus.textContent = "Sending your enquiry...";
-        }
+        submitButton.disabled = true;
+        submitButton.textContent = "Sending Enquiry...";
+
+        formStatus.textContent = "Sending your enquiry...";
+        formStatus.style.color = "#bac5d8";
 
         try {
             const formData = new FormData(contactForm);
@@ -143,36 +96,24 @@ if (contactForm) {
                 throw new Error("Email submission was unsuccessful.");
             }
 
-            if (formStatus) {
-                formStatus.textContent =
-                    "Email enquiry sent successfully. Opening WhatsApp...";
-            }
-
             contactForm.reset();
 
-            window.location.href = whatsappURL;
+            formStatus.textContent =
+                "Thank you! Your project enquiry has been submitted successfully. We'll be in touch soon.";
+
+            formStatus.style.color = "#86efac";
 
         } catch (error) {
             console.error("Contact form error:", error);
 
-            if (formStatus) {
-                formStatus.textContent =
-                    "We couldn't confirm email delivery. Please try again or contact us directly on WhatsApp.";
-            }
+            formStatus.textContent =
+                "Sorry, we couldn't submit your enquiry. Please try again or contact us directly through WhatsApp.";
 
-            // Still allow the visitor to contact you through WhatsApp.
-            const openWhatsApp = window.confirm(
-                "We couldn't confirm that your email enquiry was sent. Would you like to continue with WhatsApp instead?"
-            );
+            formStatus.style.color = "#fca5a5";
 
-            if (openWhatsApp) {
-                window.location.href = whatsappURL;
-            }
         } finally {
-            if (submitButton) {
-                submitButton.disabled = false;
-                submitButton.textContent = "Send Project Enquiry";
-            }
+            submitButton.disabled = false;
+            submitButton.innerHTML = originalButtonHTML;
         }
     });
 }

@@ -723,74 +723,215 @@ button {
 }
 
 /* =========================================
-   ABOUT
+ABOUT — REFINED EDITORIAL
 ========================================= */
 
 .about-section {
-    background:
-        radial-gradient(
-            ellipse at 15% 50%,
-            rgba(79, 124, 255, 0.08),
-            transparent 45%
-        ),
-        #101827;
+position: relative;
+isolation: isolate;
+overflow: hidden;
 
-    border-top: 1px solid rgba(255, 255, 255, 0.05);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+background:
+    radial-gradient(
+        ellipse at 12% 45%,
+        rgba(79, 124, 255, 0.11),
+        transparent 42%
+    ),
+    linear-gradient(
+        135deg,
+        #101827 0%,
+        #0d1524 55%,
+        #101a2c 100%
+    );
+
+border-top: 1px solid rgba(255, 255, 255, 0.06);
+border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+
 }
+
+/* Editorial layout */
 
 .about-inner {
-    display: grid;
-    grid-template-columns: minmax(0, 0.7fr) minmax(0, 1.3fr);
-    align-items: start;
-    gap: 75px;
+display: grid;
+grid-template-columns: minmax(0, 0.75fr) minmax(0, 1.25fr);
+align-items: center;
+gap: clamp(40px, 7vw, 100px);
 }
+
+/* Left branding column */
 
 .about-marker {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+display: flex;
+flex-direction: column;
+align-items: flex-start;
 }
 
+.about-marker .eyebrow {
+color: #9bb7ff;
+font-size: 11px;
+font-weight: 700;
+letter-spacing: 2.5px;
+}
+
+/* Oversized brand letter */
+
 .about-symbol {
-    margin-top: 25px;
+position: relative;
+display: inline-block;
 
-    color: rgba(142, 171, 255, 0.15);
+margin-top: 30px;
 
-    font-family: "Manrope", Arial, sans-serif;
-    font-size: 120px;
-    font-weight: 800;
-    line-height: 1;
-    letter-spacing: -10px;
+color: transparent;
+-webkit-text-stroke: 1px rgba(142, 171, 255, 0.48);
+
+font-family: "Manrope", Arial, sans-serif;
+font-size: clamp(130px, 17vw, 220px);
+font-weight: 800;
+line-height: 0.9;
+letter-spacing: -0.09em;
+
+user-select: none;
+
+}
+
+/* Right content column */
+
+.about-content {
+max-width: 720px;
 }
 
 .about-content h2 {
-    max-width: 650px;
+max-width: 650px;
+margin: 0;
+
+color: #f7f9ff;
+font-size: clamp(34px, 4.2vw, 58px);
+font-weight: 700;
+line-height: 1.13;
+letter-spacing: -0.055em;
+
+}
+
+.about-content h2 span {
+color: #7da2ff;
+}
+
+/* Supporting description */
+
+.about-content > p {
+max-width: 590px;
+margin-top: 24px;
+margin-bottom: 0;
+
+color: rgba(220, 228, 243, 0.76);
+font-size: 15px;
+line-height: 1.95;
+
+}
+
+/* Call to action */
+
+.about-content .text-link {
+display: inline-flex;
+align-items: center;
+gap: 8px;
+
+margin-top: 30px;
+
+color: #9bb7ff;
+font-size: 14px;
+font-weight: 700;
+
+text-decoration: none;
+
+transition:
+    color 0.25s ease,
+    gap 0.25s ease;
+
+}
+
+.about-content .text-link:hover {
+color: #ffffff;
+gap: 13px;
+}
+
+.about-content .text-link:focus-visible {
+outline: 2px solid #7da2ff;
+outline-offset: 5px;
+border-radius: 2px;
+}
+
+/* Optional image styling */
+
+.about-image {
+display: block;
+width: 100%;
+aspect-ratio: 4 / 3;
+object-fit: cover;
+
+border: 1px solid var(--border);
+border-radius: var(--radius);
+
+box-shadow: var(--shadow-md);
+
+}
+
+/* Tablet adjustments */
+
+@media (max-width: 900px) {
+.about-inner {
+grid-template-columns: minmax(0, 0.65fr) minmax(0, 1.35fr);
+gap: 38px;
+}
+
+.about-symbol {
+    font-size: clamp(115px, 16vw, 165px);
+}
+
+.about-content h2 {
+    font-size: clamp(32px, 4.5vw, 44px);
+}
+
+}
+
+/* Mobile adjustments */
+
+@media (max-width: 600px) {
+.about-inner {
+grid-template-columns: 1fr;
+gap: 28px;
+}
+
+.about-symbol {
+    margin-top: 16px;
+    font-size: 100px;
+    line-height: 0.85;
+}
+
+.about-content h2 {
+    font-size: clamp(34px, 9vw, 42px);
+    line-height: 1.15;
+    letter-spacing: -0.045em;
 }
 
 .about-content > p {
-    max-width: 650px;
-    margin-top: 22px;
-
-    color: var(--muted);
-    font-size: 15px;
-    line-height: 2;
+    margin-top: 18px;
+    font-size: 14px;
+    line-height: 1.85;
 }
 
 .about-content .text-link {
-    margin-top: 25px;
+    margin-top: 24px;
 }
 
-.about-image {
-    display: block;
-    width: 100%;
-    aspect-ratio: 4 / 3;
-    object-fit: cover;
+}
 
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
+/* Respect reduced-motion preferences */
 
-    box-shadow: var(--shadow-md);
+@media (prefers-reduced-motion: reduce) {
+.about-content .text-link {
+transition: none;
+}
 }
 
 /* =========================================
@@ -1004,16 +1145,17 @@ button {
 }
 
 /* =========================================
-   CONTACT
+   CONTACT SECTION
 ========================================= */
 
 .contact-section {
+    position: relative;
     overflow: hidden;
 
     background:
         radial-gradient(
             ellipse at 85% 20%,
-            rgba(79, 124, 255, 0.1),
+            rgba(79, 124, 255, 0.10),
             transparent 42%
         ),
         #0b101b;
@@ -1034,20 +1176,34 @@ button {
     margin-inline: auto;
 }
 
+/* CONTACT INTRODUCTION */
+
+.contact-header {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .contact-inner .eyebrow {
     color: #9bb4ff;
 }
 
 .contact-inner h2 {
     max-width: 790px;
+    margin-top: 16px;
+
     font-size: clamp(36px, 5vw, 58px);
+    line-height: 1.15;
+    letter-spacing: -1.8px;
 }
 
 .contact-inner h2 span {
+    display: block;
     color: #8eabff;
 }
 
-.contact-inner > p {
+.contact-header p {
     max-width: 600px;
     margin-top: 22px;
 
@@ -1055,6 +1211,8 @@ button {
     font-size: 14px;
     line-height: 1.9;
 }
+
+/* DIRECT CONTACT BUTTONS */
 
 .contact-buttons {
     display: flex;
@@ -1092,7 +1250,7 @@ button {
     font-size: 11px;
 }
 
-/* Contact divider */
+/* FORM DIVIDER */
 
 .contact-divider {
     width: 100%;
@@ -1101,7 +1259,7 @@ button {
     align-items: center;
     gap: 18px;
 
-    margin: 48px 0 28px;
+    margin: 54px 0 28px;
 
     color: #8d99ad;
     font-size: 11px;
@@ -1117,21 +1275,21 @@ button {
     background: rgba(141, 153, 173, 0.25);
 }
 
-/* Contact form */
+/* PROJECT ENQUIRY FORM */
 
 .contact-form {
     width: 100%;
-    max-width: 900px;
+    max-width: 850px;
 
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 22px;
+    gap: 24px;
 
-    margin: 10px auto 0;
-    padding: 32px;
+    margin: 0 auto;
+    padding: 36px;
 
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.10);
+    border-radius: 18px;
 
     background: linear-gradient(
         145deg,
@@ -1148,18 +1306,22 @@ button {
 
     display: flex;
     flex-direction: column;
-    gap: 9px;
+    gap: 10px;
 }
 
 .contact-form .form-group:last-of-type {
     grid-column: 1 / -1;
 }
 
+/* FORM LABELS */
+
 .contact-form label {
     color: #e7ecf8;
     font-size: 13px;
     font-weight: 600;
 }
+
+/* FORM INPUTS */
 
 .contact-form input,
 .contact-form select,
@@ -1169,19 +1331,21 @@ button {
 
     padding: 14px 16px;
 
-    border: 1px solid rgba(255, 255, 255, 0.13);
-    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 9px;
 
     outline: none;
     background: #0b1220;
     color: var(--white);
 
+    font-family: inherit;
     font-size: 14px;
     line-height: 1.6;
 
     transition:
         border-color 0.25s ease,
-        box-shadow 0.25s ease;
+        box-shadow 0.25s ease,
+        background-color 0.25s ease;
 }
 
 .contact-form input,
@@ -1190,7 +1354,7 @@ button {
 }
 
 .contact-form textarea {
-    min-height: 145px;
+    min-height: 150px;
     resize: vertical;
 }
 
@@ -1200,37 +1364,125 @@ button {
     opacity: 1;
 }
 
+.contact-form select {
+    cursor: pointer;
+}
+
 .contact-form select option {
     background: var(--navy);
     color: var(--white);
 }
 
+/* INPUT FOCUS EFFECTS */
+
 .contact-form input:focus,
 .contact-form select:focus,
 .contact-form textarea:focus {
     border-color: var(--blue);
-    box-shadow: 0 0 0 3px rgba(79, 124, 255, 0.15);
+    background: #0d1628;
+
+    box-shadow:
+        0 0 0 3px rgba(79, 124, 255, 0.15);
 }
+
+/* SUBMIT BUTTON */
 
 .contact-form button[type="submit"] {
     justify-self: start;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
 
     border: 0;
     background: var(--blue);
     color: var(--white);
 
     cursor: pointer;
+
+    transition:
+        background-color 0.25s ease,
+        transform 0.25s ease;
 }
 
 .contact-form button[type="submit"]:hover {
     background: var(--blue-dark);
+    transform: translateY(-2px);
 }
+
+.contact-form button[type="submit"]:focus-visible {
+    outline: 2px solid #9bb4ff;
+    outline-offset: 4px;
+}
+
+/* FORM STATUS MESSAGE */
 
 .contact-form .form-status {
     grid-column: 1 / -1;
     margin: 0;
+
+    color: #bac5d8;
     font-size: 14px;
     line-height: 1.7;
+}
+
+/* =========================================
+   CONTACT RESPONSIVENESS
+========================================= */
+
+@media (max-width: 600px) {
+
+    .contact-inner h2 {
+        font-size: clamp(32px, 8vw, 42px);
+        letter-spacing: -1px;
+    }
+
+    .contact-header p {
+        max-width: 100%;
+        margin-top: 18px;
+        font-size: 14px;
+        line-height: 1.8;
+    }
+
+    .contact-buttons {
+        width: 100%;
+        gap: 12px;
+        margin-top: 26px;
+    }
+
+    .contact-buttons .button {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .contact-divider {
+        gap: 12px;
+        margin: 42px 0 24px;
+        font-size: 9px;
+        letter-spacing: 1.4px;
+    }
+
+    .contact-form {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 22px;
+
+        padding: 24px 18px;
+        border-radius: 14px;
+    }
+
+    .contact-form .form-group:last-of-type {
+        grid-column: auto;
+    }
+
+    .contact-form button[type="submit"] {
+        width: 100%;
+        justify-self: stretch;
+    }
+
+    .contact-form .form-status {
+        grid-column: auto;
+    }
 }
 
 /* =========================================
@@ -1243,6 +1495,12 @@ button {
     color: #a0aabd;
 }
 
+.site-footer > .container {
+    width: 100%;
+}
+
+/* MAIN FOOTER CONTENT */
+
 .footer-inner {
     min-height: 125px;
 
@@ -1252,7 +1510,13 @@ button {
     flex-wrap: wrap;
     gap: 22px;
 
-    padding-block: 28px;
+    padding: 30px 24px;
+}
+
+/* BRAND */
+
+.footer-brand {
+    text-decoration: none;
 }
 
 .footer-brand .brand-name {
@@ -1263,31 +1527,96 @@ button {
     color: #929db2;
 }
 
-.footer-inner > p {
+/* TAGLINE */
+
+.footer-tagline {
+    margin: 0;
+
     color: #929db2;
     font-size: 12px;
+    line-height: 1.7;
 }
 
+/* BACK TO TOP */
+
 .back-to-top {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+
     color: #c3cee0;
     font-size: 10px;
     font-weight: 700;
     letter-spacing: 1.2px;
-    transition: color 0.2s ease;
+
+    text-decoration: none;
+
+    transition:
+        color 0.2s ease,
+        transform 0.2s ease;
+}
+
+.back-to-top span {
+    transition: transform 0.2s ease;
 }
 
 .back-to-top:hover {
     color: var(--blue-light);
 }
 
-.copyright {
-    width: 100%;
-    padding-top: 17px;
+.back-to-top:hover span {
+    transform: translateY(-3px);
+}
+
+/* COPYRIGHT */
+
+.footer-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding-block: 18px;
 
     border-top: 1px solid rgba(255, 255, 255, 0.09);
+}
 
+.copyright {
     color: #8996aa;
     font-size: 11px;
+    line-height: 1.8;
+    text-align: center;
+}
+
+/* =========================================
+   FOOTER RESPONSIVENESS
+========================================= */
+
+@media (max-width: 600px) {
+
+    .footer-inner {
+        min-height: auto;
+
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        gap: 20px;
+        padding-block: 32px;
+
+        text-align: center;
+    }
+
+    .footer-tagline {
+        font-size: 12px;
+    }
+
+    .footer-bottom {
+        padding-block: 18px;
+    }
+
+    .copyright {
+        font-size: 10px;
+    }
 }
 
 /* =========================================
