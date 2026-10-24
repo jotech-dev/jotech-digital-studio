@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://jotech-dev.github.io/jotech-digital-studio/sitemap.xml
